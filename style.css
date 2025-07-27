@@ -15,6 +15,13 @@ body {
   margin: 20px auto;
 }
 
+#cooldownLabel {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+}
+
 .pixel {
   width: 10px;
   height: 10px;
