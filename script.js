@@ -1,9 +1,12 @@
-function sayHi() {
-  alert("bruh idk");
-  window.location.href = "https://en.wikipedia.org/wiki/2025_Pacific_typhoon_season";
-}
+const canvas = document.getElementById('canvas');
+const colorPicker = document.getElementById('colorPicker');
 
-const today = new Date();
-const options = { year: 'numeric', month: 'long', day: 'numeric' };
-const formattedDate = today.toLocaleDateString('en-US', options);
-document.getElementById("date").textContent = "This is a satellite image taken on " + formattedDate;
+// Create 50 × 50 = 2500 pixels
+for (let i = 0; i < 50 * 50; i++) {
+  const pixel = document.createElement('div');
+  pixel.className = 'pixel';
+  pixel.addEventListener('click', () => {
+    pixel.style.backgroundColor = colorPicker.value;
+  });
+  canvas.appendChild(pixel);
+}
