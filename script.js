@@ -4,7 +4,7 @@ const cooldownLabel = document.getElementById('cooldownLabel');
 
 const db = firebase.database();
 const gridSize = 50;
-const cooldownMs = 5000; // 5 seconds
+const cooldownMs = 20000; // 20 seconds
 let canPlace = true;
 
 // Create 2500 pixels (50x50)
