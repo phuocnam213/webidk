@@ -1,5 +1,6 @@
 const canvas = document.getElementById('canvas');
 const colorPicker = document.getElementById('colorPicker');
+const cooldownLabel = document.getElementById('cooldownLabel');
 const db = firebase.database();
 
 let canPlace = true;
@@ -26,16 +27,23 @@ for (let i = 0; i < gridSize * gridSize; i++) {
     db.ref('pixels/' + i).set(color);
   
     canPlace = false;
-  
-    // Optional: show cooldown indicator
     colorPicker.disabled = true;
   
-    setTimeout(() => {
-      canPlace = true;
-      colorPicker.disabled = false;
-    }, cooldownMs);
+    let secondsLeft = cooldownMs / 1000;
+    cooldownLabel.textContent = `Wait: ${secondsLeft}s...`;
+  
+    const interval = setInterval(() => {
+      secondsLeft--;
+      if (secondsLeft > 0) {
+        cooldownLabel.textContent = `Wait: ${secondsLeft}s...`;
+      } else {
+        clearInterval(interval);
+        canPlace = true;
+        colorPicker.disabled = false;
+        cooldownLabel.textContent = `You can place again!`;
+      }
+    }, 1000);
   });
-
   canvas.appendChild(pixel);
 }
 
