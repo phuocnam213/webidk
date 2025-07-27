@@ -10,9 +10,9 @@
   <input type="color" id="colorPicker" value="#ff0000">
   <div id="canvas"></div>
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js"></script>
+  <!-- ✅ Firebase CDN (compat version) -->
+  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database-compat.js"></script>
 
   <script>
     const firebaseConfig = {
@@ -25,10 +25,10 @@
       appId: "1:167645942816:web:d5f0ff7ac670e568245845"
     };
 
+    // ✅ Use global firebase object
     firebase.initializeApp(firebaseConfig);
   </script>
 
-  <!-- Your main script -->
   <script src="script.js"></script>
 </body>
 </html>
