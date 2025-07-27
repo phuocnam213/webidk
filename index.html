@@ -9,6 +9,26 @@
   <h1>🧩 Mini r/place</h1>
   <input type="color" id="colorPicker" value="#ff0000">
   <div id="canvas"></div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDjK--4kdnHP15mPAJW_Jv4a2j-1F3hFWI",
+      authDomain: "rplace-idk.firebaseapp.com",
+      databaseURL: "https://rplace-idk-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "rplace-idk",
+      storageBucket: "rplace-idk.firebasestorage.app",
+      messagingSenderId: "167645942816",
+      appId: "1:167645942816:web:d5f0ff7ac670e568245845"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <!-- Your main script -->
   <script src="script.js"></script>
 </body>
 </html>
