@@ -2,13 +2,15 @@ body {
   text-align: center;
   font-family: sans-serif;
   background: #f4f4f4;
+  padding: 20px;
+  margin: 0;
 }
 
 #canvas {
   display: grid;
   grid-template-columns: repeat(50, 10px);
   grid-template-rows: repeat(50, 10px);
-  gap: 1px;
+  gap: 0px;
   justify-content: center;
   margin: 20px auto;
 }
@@ -17,6 +19,6 @@ body {
   width: 10px;
   height: 10px;
   background-color: #ffffff;
-  border: 1px solid #ddd;
+  border: 0px solid #ddd;
   cursor: pointer;
 }
