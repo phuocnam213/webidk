@@ -4,6 +4,12 @@ const colorPicker = document.getElementById('colorPicker');
 const db = firebase.database();
 const gridSize = 50;
 
+
+pixel.tabIndex = -1; // Prevents focus
+pixel.addEventListener('mousedown', (e) => {
+  e.preventDefault(); // Stops caret from appearing
+});
+
 // Create the 50x50 grid
 for (let i = 0; i < gridSize * gridSize; i++) {
   const pixel = document.createElement('div');
