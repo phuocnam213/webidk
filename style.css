@@ -21,4 +21,6 @@ body {
   background-color: #ffffff;
   border: 0px solid #ddd;
   cursor: pointer;
+  outline: none;
+  user-select: none;
 }
