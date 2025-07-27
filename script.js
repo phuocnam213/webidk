@@ -2,6 +2,9 @@ const canvas = document.getElementById('canvas');
 const colorPicker = document.getElementById('colorPicker');
 const db = firebase.database();
 
+let canPlace = true;
+const cooldownMs = 20000; // 20 seconds
+
 const gridSize = 50;
 
 for (let i = 0; i < gridSize * gridSize; i++) {
@@ -17,8 +20,20 @@ for (let i = 0; i < gridSize * gridSize; i++) {
 
   // Color update on click
   pixel.addEventListener('click', () => {
+    if (!canPlace) return;
+  
     const color = colorPicker.value;
     db.ref('pixels/' + i).set(color);
+  
+    canPlace = false;
+  
+    // Optional: show cooldown indicator
+    colorPicker.disabled = true;
+  
+    setTimeout(() => {
+      canPlace = true;
+      colorPicker.disabled = false;
+    }, cooldownMs);
   });
 
   canvas.appendChild(pixel);
