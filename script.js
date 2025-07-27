@@ -1,21 +1,21 @@
 const canvas = document.getElementById('canvas');
 const colorPicker = document.getElementById('colorPicker');
-
 const db = firebase.database();
+
 const gridSize = 50;
 
-
-pixel.tabIndex = -1; // Prevents focus
-pixel.addEventListener('mousedown', (e) => {
-  e.preventDefault(); // Stops caret from appearing
-});
-
-// Create the 50x50 grid
 for (let i = 0; i < gridSize * gridSize; i++) {
   const pixel = document.createElement('div');
   pixel.className = 'pixel';
   pixel.dataset.index = i;
 
+  // ✅ Prevent blinking text cursor (inside the loop)
+  pixel.tabIndex = -1;
+  pixel.addEventListener('mousedown', (e) => {
+    e.preventDefault(); // Prevent focus/caret
+  });
+
+  // Color update on click
   pixel.addEventListener('click', () => {
     const color = colorPicker.value;
     db.ref('pixels/' + i).set(color);
@@ -24,11 +24,11 @@ for (let i = 0; i < gridSize * gridSize; i++) {
   canvas.appendChild(pixel);
 }
 
-// Sync all pixels in real time
+// Sync from Firebase
 db.ref('pixels').on('value', snapshot => {
   const pixels = snapshot.val() || {};
   document.querySelectorAll('.pixel').forEach(pixel => {
-    const index = pixel.dataset.index;
-    pixel.style.backgroundColor = pixels[index] || '#ffffff';
+    const i = pixel.dataset.index;
+    pixel.style.backgroundColor = pixels[i] || '#ffffff';
   });
 });
