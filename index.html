@@ -1,37 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Mini r/place</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>🧩 Mini r/place</h1>
-  <input type="color" id="colorPicker" value="#ff0000">
-  <p id="cooldownLabel"></p>
-  <div id="canvas"></div>
-
-  <!-- ✅ Firebase CDN (compat version) -->
-  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database-compat.js"></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+NSW:wght@100..400&display=swap" rel="stylesheet">
-  
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyDjK--4kdnHP15mPAJW_Jv4a2j-1F3hFWI",
-      authDomain: "rplace-idk.firebaseapp.com",
-      databaseURL: "https://rplace-idk-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "rplace-idk",
-      storageBucket: "rplace-idk.firebasestorage.app",
-      messagingSenderId: "167645942816",
-      appId: "1:167645942816:web:d5f0ff7ac670e568245845"
-    };
-
-    // ✅ Use global firebase object
-    firebase.initializeApp(firebaseConfig);
-  </script>
-
-  <script src="script.js"></script>
-</body>
+<html>
+  <head>
+    <style>
+      * {
+        cursor: none
+      }
+      body {
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .loading {
+        background-color: #FFF;
+        display: fixed
+      }
+      .loading img {
+        display: block;
+        min-height: 209px;
+        min-width:200px;
+      }
+      .mouse {
+        width: 25px;
+        height: 25px;
+        border-radius: 100%;
+        background-color: #fff782;
+        position: absolute;
+        animation: mouseAnimation .5s infinite ease-in-out alternate;
+        left: 0;
+        top: 0
+      }
+      @keyframes mouseAnimation {
+        from {
+          width: 25px;
+          height:25px
+        }
+        to {
+          width: 15px
+          height: 15px
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading">
+      <img src="http://a.top4top.net/p_1990j031.gif" alt="Loading">
+    </div>
+    <div class="mouse original"></div>
+    <script>
+      $(".loading").height($(window).height());
+      $(".loading").width($(window).width());
+      $(."loading img").css({paddingTop: ($(".loading").height() - $(."loading img").height()) / 2,
+                             paddingLeft: ($(".loading").width() - $(."loading img").width()) / 2
+                            });
+      $(window).resize(function () {
+        "use strict";
+        $(".loading").height($(window).height());
+        $(".loading").width($(window).width());
+        $(."loading img").css({paddingTop: ($(".loading").height() - $(."loading img").height()) / 2,
+                               paddingLeft: ($(".loading").width() - $(."loading img").width()) / 2
+                              });
+      });
+      $(window).mousemove(function (e) {
+        "use strict";
+        $(".original").css({
+          left: e.pageX - 16,
+          top: e.pageY - 16
+        });
+      });
+      $("body").on("click", function (e) {
+        "use strict";
+        $(".original").clone(true).appendTo("body").css({
+          left: e.pageX - 16,
+          top: e.pageY - 16
+        }).removeClass("original");
+      });            
+    </script>
+  </body>
 </html>
