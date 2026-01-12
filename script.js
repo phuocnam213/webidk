@@ -1,7 +1,5 @@
 $(function () {
 
-  
-  $(window).on("resize", centerImage);
 
   $(window).on("mousemove", function (e) {
     $(".original").css({
@@ -22,4 +20,5 @@ $(function () {
   });
 
 });
+
 
