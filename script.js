@@ -1,19 +1,6 @@
 $(function () {
 
-  function centerImage() {
-    const $loading = $(".loading");
-    const $img = $(".loading img");
-
-    $loading.height($(window).height());
-    $loading.width($(window).width());
-
-    $img.css({
-      paddingTop: ($loading.height() - $img.height()) / 2,
-      paddingLeft: ($loading.width() - $img.width()) / 2
-    });
-  }
-
-  centerImage();
+  
   $(window).on("resize", centerImage);
 
   $(window).on("mousemove", function (e) {
@@ -35,3 +22,4 @@ $(function () {
   });
 
 });
+
