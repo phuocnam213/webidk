@@ -30,13 +30,22 @@ html, body {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background-color: #fff782;
+  background-color: #ff0000;
   position: absolute;
   left: 0;
   top: 0;
 
   animation: mouseAnimation 0.5s infinite ease-in-out alternate;
+  hueShift 3s linear infinite;
   pointer-events: none;
+}
+@keyframes hueShift {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
 }
 
 @keyframes mouseAnimation {
@@ -49,4 +58,5 @@ html, body {
     height: 15px;
   }
 }
+
 
