@@ -23,8 +23,14 @@ $(function () {
       })
       .removeClass("original");
   });
+  
+  $("#coin").on("click", function () {
+    const n = randomCoin();
+    alert("coin " + n);
+  });
 
 });
+
 
 
 
