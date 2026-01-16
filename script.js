@@ -1,6 +1,11 @@
+function secureRandom(min, max) {
+  const array = new Uint32Array(1);
+  crypto.getRandomValues(array);
+  return min + (array[0] % (max - min + 1));
+}
+
 $(function () {
-
-
+  
   $(window).on("mousemove", function (e) {
     $(".original").css({
       left: e.pageX - 16,
@@ -20,5 +25,6 @@ $(function () {
   });
 
 });
+
 
 
