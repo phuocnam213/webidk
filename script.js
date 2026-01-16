@@ -25,11 +25,12 @@ $(function () {
   });
   
   $("#coin").on("click", function () {
-    const n = randomCoin();
+    const n = secureRandom(1,3);
     alert("coin " + n);
   });
 
 });
+
 
 
 
