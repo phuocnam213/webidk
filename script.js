@@ -26,10 +26,12 @@ $(function () {
   
   $("#coin").on("click", function () {
     const n = secureRandom(1,3);
-    alert("coin " + n);
+    const l = secureRandom(1, 22);
+    alert("Coin " + n + ", level" + m);
   });
 
 });
+
 
 
 
