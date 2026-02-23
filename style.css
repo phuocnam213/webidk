@@ -26,7 +26,7 @@ html, body {
 }
 
 /* Custom cursor */
-.mouse {
+/* .mouse {
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -38,7 +38,7 @@ html, body {
   animation: mouseAnimation 0.5s infinite ease-in-out alternate;
   hueShift 3s linear infinite;
   pointer-events: none;
-}
+} */
 @keyframes hueShift {
   from {
     filter: hue-rotate(0deg);
@@ -58,5 +58,6 @@ html, body {
     height: 15px;
   }
 }
+
 
 
